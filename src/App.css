@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 .btn-start {
-  margin: 100px 200px;
+  margin: auto 200px;
   background-color: bisque;
   font-size: 4rem;
   padding: 40px;
@@ -13,5 +13,5 @@
 }
 h3 {
   font-size: 96px;
-  margin: 0 200px;
+  margin: auto 200px;
 }

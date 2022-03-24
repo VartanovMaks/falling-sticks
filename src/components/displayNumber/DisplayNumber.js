@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../App.css';
 
-function DisplayNumber({stickNumber}) {
+function DisplayNumber({stickIndex, gameArray}) {
     return (
         <div>
-            {stickNumber && <h3>{stickNumber}</h3>}
+            {stickIndex !== -1 && <h3>{gameArray[stickIndex].stick}</h3>}
         </div>
     );
 }
