@@ -1,9 +1,10 @@
 import React from 'react';
+import '../../App.css';
 
-function DisplayNumber(props) {
+function DisplayNumber({stickNumber}) {
     return (
         <div>
-            sdsdsd
+            {stickNumber && <h3>{stickNumber}</h3>}
         </div>
     );
 }
