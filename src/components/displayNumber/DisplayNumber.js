@@ -3,8 +3,8 @@ import '../../App.css';
 
 function DisplayNumber({stickNumber}) {
     return (
-        <div>
-            {stickNumber && <h3>{stickNumber}</h3>}
+        <div className='column div-number'>
+            {stickNumber !== -1 && <p>{stickNumber}</p>}
         </div>
     );
 }

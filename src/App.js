@@ -6,17 +6,26 @@ import { randomIntervals } from './helpers/randomIntervals';
 import {randomNumbers} from './helpers/randomNumbers';
 
 function App() {
+  const STUB = {
+    stick:-1,
+    interval:-1
+  }
   const [timerId, setTimerId] = useState();
-  const [stickNumber, setStickNumber] = useState();
+  const [stick, setStick] = useState(STUB);
 
   function launchTimers(arrIntervals, arrStickNumber){
     if(timerId !== undefined) clearTimeout(timerId);
     let i=0;
     setTimerId(setTimeout(function request() {
-      setStickNumber(arrStickNumber[i]);
+      setStick(
+        {
+          stick:arrStickNumber[i],
+          interval:arrIntervals[i]
+        }
+      );
       if(i<arrIntervals.length-1) i++;
       else {
-        setTimeout(()=>setStickNumber(undefined), 3000)
+        setTimeout(()=>setStick(STUB), 4000)
         clearTimeout(timerId);
         return
       }
@@ -25,6 +34,7 @@ function App() {
   }
 
   function clickHandle(){
+    setStick(STUB);
     let arrStickNumber=randomNumbers();
     let arrIntervals=randomIntervals(arrStickNumber);
     
@@ -32,10 +42,20 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='div-container'>
       <button className="btn-start" onClick={clickHandle}>Start</button>
-      <DisplayNumber stickNumber={stickNumber}/>
-      <DisplayProtocol />
+      { stick.stick !== -1 &&
+        <div className='div-info'>
+          <div className='column'>Number</div>
+          <div className='column'>Protocol</div>
+        </div>
+      }
+      { stick.stick !== -1 &&
+        <div className='div-info'>
+          <DisplayNumber stickNumber={stick.stick}/>
+          <DisplayProtocol stick={stick} />
+        </div>
+      }
     </div>
   )
 }
