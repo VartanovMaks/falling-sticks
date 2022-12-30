@@ -15,8 +15,11 @@ function DisplayProtocol({stick}) {
     return (
         <div className='column div-protocol'>
            {arrStick.length>0 && 
-                    arrStick.map(item=>(
-                        <div key={item.stick}>{`${item.stick} - ${item.interval/1000}с`}</div>
+                    arrStick.map((item, index)=>(
+                        <div key={item.stick}>
+                            <h3>{`${item.stick} - ${item.interval/1000} с` }</h3> 
+                            {(index === 7) && <h4>Finished</h4>}
+                        </div>
                         )
                     )
            }
